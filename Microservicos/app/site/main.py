@@ -47,6 +47,9 @@ if app.config['SHOWHOST'] == "true":
 # Init Redis
 if not r.get(button1): r.set(button1,0)
 if not r.get(button2): r.set(button2,0)
+if not r.get(firstname): r.set('')
+if not r.get(lastname): r.set('')
+
 
 @app.route('/', methods=['GET', 'POST'])
 def index():
@@ -54,11 +57,14 @@ def index():
     if request.method == 'GET':
 
         # Get current values
-        vote1 = r.get(button1).decode('utf-8')
-        vote2 = r.get(button2).decode('utf-8')            
+        #vote1 = r.get(button1).decode('utf-8')
+        #vote2 = r.get(button2).decode('utf-8')   
+        fname = r.get(firstname)
+        lname = r.get(lastname)
 
         # Return index with values
-        return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
+        #return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
+        return render_template("index.html", value1=str(fname), button1=button1, button2=button2, title=title)
 
     elif request.method == 'POST':
 
@@ -74,15 +80,20 @@ def index():
         else:
 
             # Insert vote result into DB
-            vote = request.form['vote']
-            r.incr(vote,1)
+            #vote = request.form['vote']
+            fname = request.form['fname']
+            lname = request.form['lname']
+            #r.incr(vote,1)
+            r.set(firstname, fname)
+            r.set(lastname, lname)
+      
             
             # Get current values
-            vote1 = r.get(button1).decode('utf-8')
-            vote2 = r.get(button2).decode('utf-8')  
+            #vote1 = r.get(button1).decode('utf-8')
+            #vote2 = r.get(button2).decode('utf-8')  
                 
             # Return results
-            return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
+            #return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
 
 if __name__ == "__main__":
     app.run()
