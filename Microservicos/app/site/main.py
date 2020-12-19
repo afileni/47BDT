@@ -81,8 +81,8 @@ def index():
     elif request.method == 'POST':
 
         if request.form['vote'] == 'reset':
-            
-            return render_template("index.html", value1=str(fname), title=title)
+            fname = r.get(firstname)
+            return render_template("index.html", value1=fname, title=title)
             # Empty table and return results
             #r.set(button1,0)
             #r.set(button2,0)
