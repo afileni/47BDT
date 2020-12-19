@@ -1,7 +1,7 @@
 version: '3'
 services:
   microservicos-back:
-    image: mcr.microsoft.com/oss/bitnami/redis:6.0.8
+    image: redis
     container_name: microservicos-back
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
