@@ -30,13 +30,7 @@ if ("FIRSTNAME" in os.environ and os.environ['FIRSTNAME']):
 else:
     firstname = app.config['FIRSTNAME']
 
-
-if ("LASTNAME" in os.environ and os.environ['LASTNAME']):
-    lastname = os.environ['LASTNAME']
-else:
-    lastname = app.config['LASTNAME']
-    
-    
+   
 # Redis configurations
 redis_server = os.environ['REDIS']
 
@@ -59,8 +53,7 @@ if app.config['SHOWHOST'] == "true":
 # Init Redis
 if not r.get(button1): r.set(button1,0)
 if not r.get(button2): r.set(button2,0)
-if not r.get(firstname): r.set(firstname,"alderano f")
-if not r.get(lastname): r.set(lastname,"")
+if not r.get(firstname): r.set(firstname,"")
 
 
 @app.route('/', methods=['GET', 'POST'])
@@ -76,13 +69,13 @@ def index():
 
         # Return index with values
         #return render_template("index.html", value1=int(vote1), value2=int(vote2), button1=button1, button2=button2, title=title)
-        return render_template("index.html", value1=str(fname), button1=button1, button2=button2, title=title)
+        return render_template("index.html", value1=str(fname), title=title)
        
 
     elif request.method == 'POST':
 
-        if request.form['vote'] == 'reset':
-            r.set(firstname,"alderano fileni")
+        if request.form['vote'] == 'mostrar':
+            #r.set(firstname,"alderano fileni")
             fname = r.get(firstname)
             return render_template("index.html", value1=str(fname), title=title)
             # Empty table and return results
@@ -100,8 +93,8 @@ def index():
             fname = request.form['name']
             #lname = request.form['lname']
             #r.incr(vote,1)
-            r.set(firstname, "kaskdlakd")
-            return render_template("index.html", value1=str(fname), title=title)
+            r.set(firstname, fname)
+            ##return render_template("index.html", value1=str(fname), title=title)
             #r.set(lastname, lname)
       
             
