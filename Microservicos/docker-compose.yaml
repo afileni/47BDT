@@ -9,7 +9,7 @@ services:
         - "6379:6379"
 
   microservicos-front:
-    image: afileni/microservicos-redis
+    image: afileni/microservicos-app
     container_name: microservicos-app
     environment:
       REDIS: microservicos-redis
