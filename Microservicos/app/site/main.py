@@ -59,7 +59,7 @@ if app.config['SHOWHOST'] == "true":
 # Init Redis
 if not r.get(button1): r.set(button1,0)
 if not r.get(button2): r.set(button2,0)
-if not r.get(firstname): r.set(firstname,"")
+if not r.get(firstname): r.set(firstname,"alderano")
 if not r.get(lastname): r.set(lastname,"")
 
 
