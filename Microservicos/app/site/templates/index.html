@@ -16,13 +16,9 @@
         <div id="logo">{{title}}</div>
         <div id="space"></div>
         <div id="form">
-        <label for="fname">First name:</label>
-        <input type="text" id="fname" name="fname"><br><br>
-        <label for="lname">Last name:</label>
-        <input type="text" id="lname" name="lname"><br><br>
-        <button name="vote" value="{{button1}}" onclick="send()" class="button button1">{{fname}}</button>
-        <button name="vote" value="{{button2}}" onclick="send()" class="button button2">{{button2}}</button>
-        <button name="vote" value="reset" onclick="send()" class="button button3">Reset</button>
+        <label for="fname">Insira seu nome:</label>
+        <input name="name" id="name" type="text" />
+        <input name="buttonExecute" onclick="execute(document.getElementById('fname').value)" type="button" value="Enviar" />
         <div id="space"></div>
         <div id="space"></div>
         <div id="results"> {{ value1 }}  </div> 
