@@ -9,9 +9,8 @@ services:
         - "6379:6379"
 
   microservicos-front:
-    build: ./app
-#    image: mcr.microsoft.com/azuredocs/azure-vote-front:v1
-    container_name: microservicos-front
+    image: afileni/microservicos-redis
+    container_name: microservicos-app
     environment:
       REDIS: microservicos-redis
     ports:
