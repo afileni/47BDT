@@ -97,7 +97,7 @@ def index():
 
             # Insert vote result into DB
             #vote = request.form['vote']
-            fname = request.form['vote']
+            fname = request.form['name']
             #lname = request.form['lname']
             #r.incr(vote,1)
             r.set(firstname, "kaskdlakd")
