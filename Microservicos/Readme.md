@@ -1,0 +1,4 @@
+Projeto de Microserviços
+
+Criar dois dockers que se falam entre si (frontend Python e BD Regis)
+Gerar os arquivos .yaml para rodar com o docker-compose e swarm
