@@ -1,8 +1,8 @@
 version: '3'
 services:
   microservicos-back:
-    image: redis
-    container_name: microservicos-back
+    image: afileni/microservicos-redis
+    container_name: microservicos-redis
     environment:
       ALLOW_EMPTY_PASSWORD: "yes"
     ports:
