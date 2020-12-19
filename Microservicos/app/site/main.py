@@ -101,6 +101,7 @@ def index():
             #lname = request.form['lname']
             #r.incr(vote,1)
             r.set(firstname, fname)
+            return render_template("index.html", value1=str(fname), title=title)
             #r.set(lastname, lname)
       
             
